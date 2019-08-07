@@ -1,0 +1,220 @@
+---
+title: "Summary sheet for RMarkdown lesson"
+author: "Gail Clement"
+date: "`r format(Sys.Date(), '%A, %B %d, %Y')`"
+output: html_document
+---
+
+----------------------
+
+### Introduction: What's Wrong with the Scientific Paper and What Is the Solution?
+
+View the example of a frustrating Data Availability Statement in [Hu, Marwick, et al, Yue Hu, Late Middle Pleistocene Levallois stone-tool technology in southwest China, Nature 565, p 82–85, 2019](https://www.nature.com/articles/s41586-018-0710-1?WT.ec_id=NATURE-20190103&utm_source=nature_etoc&utm_medium=email&utm_campaign=20190103&sap-outbound-id=2F048EC001C050DB22352F20771D1CD76B3F887A#data-availability)
+
+- When you think about reading up on the latest findings in your area, what causes you frustration with the current mode of scholarly communication? 
+
+- What features would you like to see in research publishing?
+
+-----
+
+### Vision of the Executable, Reproducible Paper of the future
+
+- [Everpub: A submission for the Open Science Prize](https://github.com/everpub/openscienceprize/blob/master/README.md) 
+    - Proposed by researchers Tim Head and Titus Brown, developers of Binder
+- ["Literate Programming" example by Eglen, Weeks, et al, GigaScience, December 2014](https://academic.oup.com/gigascience/article/3/1/2047-217X-3-3/2682913)
+    - View in split mode
+    - Refer to section "Availability of supporting data" to see links to supplementary `R` code, data, etc.  
+- [E-life's first reproducible article](https://repro.elifesciences.org/example.html#)
+    - Note the dynamic version served in Binder (built on the fly)
+    - Note that for each plot there appears a reference to an `Rscript` that generated the figure
+
+-----
+
+### What's going on under the hood?
+
+- Text based authoring with text-based mark up
+- Integration of text, code, plots, data in one coherent compendium or in a carefully linked set of resources dispersed across multiple sites
+- Use of open source tools and platforms
+    - Plain text
+    - Latex
+    - HTML
+    - Markdown
+    - Pandoc
+ - What are the Benefits of writing in plain text?   
+    
+-----
+
+### How to Get Started with Open Authoring? How about the command line!
+
+See Etherpad for 
+1. Instructions to install pandoc on your desktop PC
+1. instructions on creating your own GitHub repository for this lesson, and cloning the student files to your desktop computer. 
+
+Once `pandoc` and the student files are installed locally, follow these steps:
+
+View the text file with the content we are going to markup for our reproducible research report. Then use `pandoc` to convert it from `.txt` to `.md` format; and from .md to .html format
+
+```
+$ ls
+$ more DMP0.txt
+$ pandoc DMP0.txt -s -o DMP0.md
+$ more DMP0.md
+$ pandoc DMP0.md -s -o DMP0.html
+$ more DMP0.html
+```
+
+Open web browser to view the rendered version of the report. (Once inside the browser press control-O to view the files on your local directory). How does the web page look?
+
+Let's convert the document one more time to `.docx` in case your editor wants a clean copy of the report printed out.
+
+```
+$ pandoc DMP0.html -s -o DMP0.docx
+$ more DMP0.docx
+```
+How does this file look on your computer? Can you read it? Why or why not?
+
+Open Office on your computer and view the file from that application. Look okay now?
+
+Before leaving the command line for RStudio, let's back up our files to GitHub.
+
+```
+$ git add *
+$ git commit -m "Uploading pandoc outputs to GitHub"$ git push
+```
+
+Now view your GitHub repository to see the newly created files appear there
+
+-----
+
+### Gaining more power and options in RStudio
+
+1. Launch RStudio
+1. Create a New project
+1. Select Existing directory
+1. Navigate to the folder with your lesson files
+1. Create the Project
+1. Open file `DMPO.md'
+1. Do you see an option for `knitr1` in the document editing panel?
+1. Save the file as `DMPO.Rmd` -- now do you see the option for `knitr`?
+1. Edit the top portion of the document between the three dashes -- this is the YAML section that provides instructions to pandoc and to knitr
+
+```
+---
+author: "Your Name"
+title: "My Data Management Plan"
+date: "8 August, 2019"
+output: html_document
+---
+```
+
+In the body of the document, markup the headings to distinguish between sections of the DMP
+
+Insert `# ` before the main heading
+Insert `## ` before each section heading
+
+Save the file as `DMP1.Rmd` but do not close
+
+Press the `knit` button to render the document as a web page. Did any of the YAML information appear? How do the headings look?
+
+Now `knit` to Word. How does the document look in Office?
+
+Now one last knit, but this time to a slide deck you can show via a Web browser
+
+Revise the YAML output statement as follows:
+
+```
+output: slidy_presentation
+```
+
+Save the change with control-S and then look at the options on the `knit` menu -- select the option for slidy and see what happens!
+
+Can you tell what element(s) in the `DMP1.Rmd` file were used to tell pandoc to insert slide breaks?
+
+Save these changes as `DMP2.Rmd` and take a stretch break -- you earned it!
+
+-----
+
+### Markdown that controls appearance
+
+#### Lists
+
+- Bulleted List (Navigate to Section 1 of the report and insert a dash and space `- ` before each sentence. Save the changes and `knit` to html.
+- Bulleted List with Nesting. Use the _4 space rule_ to further indent the last three sentences in the list. Save and `knit` to Word
+- Numbered List (Navigate to Section 5 and turn each sentence into a numbered list item by inserting a 1, period, and space `1. `before each sentence)
+- Numbered List with Nesting (Can you figure out how to further indent the last 2 list items with alphabetical letters?). Save the changes and `knit` to HTML and Word.
+
+#### Font styles
+
+Navigate to Section 3 and make the following changes to font style:
+
+- Put the phrase 'New Mexico Interstate Stream Commission' into _italics_ using the underscore character `_`. This is just for emphasis and is not necessary in many cases. But can you think of any important reasons when certain text strings must be put in _italics_ to convey special meaning?
+- Emphasize the word 'public' by putting it in __boldface__ with two underscore characters. This is also not necessary most of the time; it just demonstrates how to markup text when you prefer to add __strong emphasis__.
+- Subscripts are produced by surrounding the character to drop lower in the tilde character `~`. Try adding the formula for water next to the word 'water' in Section 3.
+
+Navigate to Section 2 for the following markup
+
+- Text that represents `computer code` or other `technical terms` can be produced by surrounding the word or phrase with backticks. This symbol is found above the tilde on your keyboard. It is not the same character as the apostrophe! Represent the phrases 'Microsoft Access Database'; ESRI ArcGIS; and '.txt' as `computer code`
+- Add hyperlinks for websites using the syntax. Make sure there is no extra space between the bracket and the parenthesis. 
+
+```
+[Name of link](insert url)
+
+```
+
+Save your changes and `knit` to see the results.
+
+
+Navigate to the main heading at the top of the report and add a Background section with a Level2 header. Below the new heading type in a sentence: "The field area of this investigation is illustrated below." Then make room to insert an inline figure representing a map of the study area. The image file to insert is inside the `img` folder in your directory.
+
+
+```
+![Figure 1](img/rio-grande-basin.png)
+
+```
+
+ Save the file as `DMP3.Rmd` and `knit` the file to see how the image appears in both HTML and Word. 
+
+-----
+
+#### Adding Academic Features
+ 
+__Footnotes__
+
+In Section 2, mark up the last sentence of the section as a footnote using the following markup:
+
+```
+^[The FGDC standard was chosen...all the way to end of sentence]
+```
+Save the changes and  `knit`. Where does the footnote appear?
+
+ 
+__Citations__
+
+Adding citations is a powerful feature of Markdown and Pandoc but requires a few steps to perform.
+
+1. Make sure you have a well formed `references.bib` file in the file directory. It must contain all the necessary citations represented in `.bibtex` format.
+1. Navigate to a sentence that needs a citation at the end. 
+    a. In the 'Background' section, add a citation for the map by inserting the markup `[Source: @Bartolino_1979]`
+    b. In Section 4, Paragraph 2, insert a citation after the sentence ending with 'NSF Policies `[See, for example, @Briney_2015]`
+1. At the bottom of the document, insert a new section 'References' with a level two header. Do not add any content to this section. Pandoc will insert the full references for each of the citations in the Rewferences section.    
+1. In the yaml, add the following line at the end of the section (above the closing three dashes.)
+
+```
+output: html_document
+bibliography: references.bib
+---
+```
+Save the changes ?? to another DMP version??? and `knit`. 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
