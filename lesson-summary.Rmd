@@ -321,6 +321,100 @@ output:
 ---
 ```
 
+Save and close DMP4.Rmd; from teh Files panel, copy it to DMP5.Rmd 
+
+# Adding Code
+
+One of the most powerful and innovative benefits of open authoring in RStudio is the abilility to combine code with the text to provide a more transparent and reuseable report.
+
+## Add code to YAML to keep title page up-to-date
+
+Open DMP5.Rmd for this next set of exercises.
+
+Replace the manually entered date in your YAML header with the either of the following code segments, surrfounded by double quotes and back tick characters on either end of the r code segment.
+
+```
+r format(Sys.time(), '%d %B, %Y')
+
+r format(Sys.Date(), '%A, %B %d, %Y')
+```
+
+
+## Add a code chunk in the body of the document
+
+Navigate to the Background section to add a data table under the map. You may add an empty code chunk by finding the green Insert menu at the top of the Rmarkdown panel and selecting `R` 
+
+```{r data-table, echo=TRUE}
+usgs <- read.csv("data/usgs.csv")
+head(usgs, 3)
+
+```
+`Knit` with `echo=TRUE` and again with `echo=FALSE`. Which do you prefer for your report?
+
+
+Now add a code chunk with a plot of Old Faithful and change the `echo= ` value before `knit`ting.
+
+
+```{r plot, echo=FALSE}
+plot(faithful, main = "Do you wait longer for longer Old Faithful eruptions?", xlab = "eruption length")
+
+```
+
+What does the `echo` do?
+
+## Add a code segment inline with the text of the document
+
+Navigate to the Background section, below the data table added a few minutes ago, and insert a line that says "There are x sampling sites in the USGS dataset"
+
+Replace the x with a code segment: `r nrow(usgs)`. What changes, and how could you use dynamic code to ensure your text is always up to date and accurate?
+
+Save the changes to this file as DMP6.Rmd
+-----
+
+# Publishing your report
+
+## Open access distribution
+
+When you save your work in a tangible medium (such as a computer file), copyright automatically attaches to your report. For open access distribution, you need to add an open license to your work that gives readers and re-users permission to do other things with your document. That is because copyright protection on the document otherwise restricts the following actions:
+
+1. Copying the document
+2. Modifying the document
+3. Publicly distributing the document
+4. Publicly performing the document (if you think your report would make a good movie, for example!)
+5. Publicly displaying the document (if you think your report would make a beautiful poster, for example!)
+
+By applying an open license, you are not reserving the above-listed rights that copyright restricts by default. Instead of claiming "All rights reserved, you are stating "Some rights reserved." The type of license you attach to your work indicates what rights you are choosing to reserve.
+
+## Selecting an open license with Creative Commons
+
+Creative Commons provides a set of legally-binding, human- and machine- readable licenses to attach to your open access work. To create a license for your report, point your web browser to [https://creativecommons.org/choose/](https://creativecommons.org/choose/) and answer the questions on the form.
+
+Scroll down to the 'Have a web page?` section of the page to see the license text and icon that fits your preferences.
+
+In the box under 'Copy this code to let your visitors know!', copy the text for pasting into your report.
+
+Return to DMP6.Rmd and paste in the code above the 'References' section. Add a new section for the license by adding a  header 'Disribution License' above the license code.
+
+`Knit` the document to see how the license appears on your HTML output.
+
+Save the file as 'index.Rmd'. Then knit the document to HTML in order to generate the web page you will upload to GitHub. 
+
+## Publish the report on GitHub
+
+Back at the command line, navigate to the directory with your lesson files and tyoe 'ls' to make sure `index.html` is there.
+
+Perform a `git add`, `git commit`, and `git push` on this file so it is on GitHub.
+
+Return to your GitHub repository. Under settings, scroll down to the section for 'GitHub Pages' and look for the url for your web site. Copy that url and close the Settings menu.
+
+On the GitHub  page for your repository, click on the 'edit' button. Add a description for your web page (eg "Reproducible Research Report") and paste in the url you copied from GitHub pages. Save and close the editing menu.
+
+Click on the url to see the published view of your report!  Congratulations, you have published an open-authored and reproducible document!!!
+
+## Minting a DOI for your report
+
+We will visit the Open Science repository [Zenodo](https://zenodo.org/) to see the steps for archiving your report and issuing a Datacite DOI for it. Advanced users may wish to learn out to synch their GitHub Repository to Zenodo for automating the release, archiving, and DOI process: see 
+
 
 
 
