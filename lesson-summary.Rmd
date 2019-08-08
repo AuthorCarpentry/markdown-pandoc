@@ -1,5 +1,5 @@
 ---
-title: "Summary sheet for RMarkdown lesson"
+title: "Summary Instructions for RMarkdown lesson"
 author: "Gail Clement"
 date: "`r format(Sys.Date(), '%A, %B %d, %Y')`"
 output: html_document
@@ -7,9 +7,18 @@ output: html_document
 
 ----------------------
 
-### Introduction: What's Wrong with the Scientific Paper and What Is the Solution?
+# Introduction: What's Wrong with the Scientific Paper and What Is the Solution?
 
 View the example of a frustrating Data Availability Statement in [Hu, Marwick, et al, Yue Hu, Late Middle Pleistocene Levallois stone-tool technology in southwest China, Nature 565, p 82–85, 2019](https://www.nature.com/articles/s41586-018-0710-1?WT.ec_id=NATURE-20190103&utm_source=nature_etoc&utm_medium=email&utm_campaign=20190103&sap-outbound-id=2F048EC001C050DB22352F20771D1CD76B3F887A#data-availability)
+
+-----
+
+![__Open Science Principles from DataTrieste19__](img/open-science.jpeg)
+
+-----
+
+## Consider the Open Science principles we discussed on Monday as you reflect on two questions:
+
 
 - When you think about reading up on the latest findings in your area, what causes you frustration with the current mode of scholarly communication? 
 
@@ -17,7 +26,7 @@ View the example of a frustrating Data Availability Statement in [Hu, Marwick, e
 
 -----
 
-### Vision of the Executable, Reproducible Paper of the future
+## Vision of the Executable, Reproducible Paper of the future
 
 - [Everpub: A submission for the Open Science Prize](https://github.com/everpub/openscienceprize/blob/master/README.md) 
     - Proposed by researchers Tim Head and Titus Brown, developers of Binder
@@ -30,21 +39,24 @@ View the example of a frustrating Data Availability Statement in [Hu, Marwick, e
 
 -----
 
-### What's going on under the hood?
+## What are the Components of Open Authorship?
 
 - Text based authoring with text-based mark up
-- Integration of text, code, plots, data in one coherent compendium or in a carefully linked set of resources dispersed across multiple sites
+- Integration of text, code, plots, data in one coherent compendium, or in a persistently linked set of curated resources dispersed across multiple sites (eg publisher site, GitHub Repository, Protocols.io)
 - Use of open source tools and platforms
     - Plain text
     - Latex
     - HTML
     - Markdown
     - Pandoc
- - What are the Benefits of writing in plain text?   
+
+#### What are the Benefits for Authors of Writing in plain text?  
+ 
+#### What are the Benefits for Readers/Re-users of Writing in plain text?
     
 -----
 
-### How to Get Started with Open Authoring? How about the command line!
+# How to Get Started with Open Authoring? Return to the command line!
 
 See Etherpad for 
 1. Instructions to install pandoc on your desktop PC
@@ -63,9 +75,9 @@ $ pandoc DMP0.md -s -o DMP0.html
 $ more DMP0.html
 ```
 
-Open web browser to view the rendered version of the report. (Once inside the browser press control-O to view the files on your local directory). How does the web page look?
+Open web browser to view the rendered version of the report. (Once inside the browser, press control-O (Oh) to view the files on your local directory). How does the web page look?
 
-Let's convert the document one more time to `.docx` in case your editor wants a clean copy of the report printed out.
+Let's convert the document one more time to `.docx` in case your advisor wants a clean copy of the report printed out.
 
 ```
 $ pandoc DMP0.html -s -o DMP0.docx
@@ -86,17 +98,17 @@ Now view your GitHub repository to see the newly created files appear there
 
 -----
 
-### Gaining more power and options in RStudio
+# Gaining more power and options in RStudio
 
 1. Launch RStudio
-1. Create a New project
+1. Select File ->  a New project
 1. Select Existing directory
 1. Navigate to the folder with your lesson files
 1. Create the Project
-1. Open file `DMPO.md'
-1. Do you see an option for `knitr1` in the document editing panel?
-1. Save the file as `DMPO.Rmd` -- now do you see the option for `knitr`?
-1. Edit the top portion of the document between the three dashes -- this is the YAML section that provides instructions to pandoc and to knitr
+1. Open file `DMPO.md' in your R Markdown panel
+1. Do you see an option for `knitr1` at the top of the panel?
+1. Save the file as `DMPO.Rmd` -- now do you see the option for `knitr` at the top of the panel?
+1. Edit the top portion of the document between the three dashes -- this is the YAML [^ Yet Another Markup Language] header that provides instructions to pandoc and to knitr
 
 ```
 ---
@@ -134,16 +146,16 @@ Save these changes as `DMP2.Rmd` and take a stretch break -- you earned it!
 
 -----
 
-### Markdown that controls appearance
+# Markdown that controls appearance
 
-#### Lists
+## Lists
 
 - Bulleted List (Navigate to Section 1 of the report and insert a dash and space `- ` before each sentence. Save the changes and `knit` to html.
 - Bulleted List with Nesting. Use the _4 space rule_ to further indent the last three sentences in the list. Save and `knit` to Word
 - Numbered List (Navigate to Section 5 and turn each sentence into a numbered list item by inserting a 1, period, and space `1. `before each sentence)
 - Numbered List with Nesting (Can you figure out how to further indent the last 2 list items with alphabetical letters?). Save the changes and `knit` to HTML and Word.
 
-#### Font styles
+## Font styles
 
 Navigate to Section 3 and make the following changes to font style:
 
@@ -163,9 +175,11 @@ Navigate to Section 2 for the following markup
 
 Save your changes and `knit` to see the results.
 
+## Inline Image
 
 Navigate to the main heading at the top of the report and add a Background section with a Level2 header. Below the new heading type in a sentence: "The field area of this investigation is illustrated below." Then make room to insert an inline figure representing a map of the study area. The image file to insert is inside the `img` folder in your directory.
 
+---
 
 ```
 ![Figure 1](img/rio-grande-basin.png)
@@ -173,10 +187,23 @@ Navigate to the main heading at the top of the report and add a Background secti
 ```
 
  Save the file as `DMP3.Rmd` and `knit` the file to see how the image appears in both HTML and Word. 
-
+ 
+ To try decreasing the dimensions of the image (the default is 5 x 7), add two new lines into your YAML below the output statements, as follows:
+ 
+ ```
+ output:
+  html_document: default
+    fig_width: 2
+    fig_height: 4
+   word_document: default
+    fig_width: 2
+    fig_height: 4
+---
+```
+  
 -----
 
-#### Adding Academic Features
+# Adding Academic Features
  
 __Footnotes__
 
@@ -196,23 +223,103 @@ Adding citations is a powerful feature of Markdown and Pandoc but requires a few
 1. Navigate to a sentence that needs a citation at the end. 
     a. In the 'Background' section, add a citation for the map by inserting the markup `[Source: @Bartolino_1979]`
     b. In Section 4, Paragraph 2, insert a citation after the sentence ending with 'NSF Policies `[See, for example, @Briney_2015]`
-1. At the bottom of the document, insert a new section 'References' with a level two header. Do not add any content to this section. Pandoc will insert the full references for each of the citations in the Rewferences section.    
-1. In the yaml, add the following line at the end of the section (above the closing three dashes.)
+1. At the bottom of the document, insert a new section 'References' with a level one header. Do not add any content to this section. Pandoc will insert, inside this References section, the full references for each of the citations embedded in the document 
+1. In the YAML, add the following line at the end of the section (above the closing three dashes.)
 
 ```
 output: html_document
 bibliography: references.bib
 ---
 ```
-Save the changes ?? to another DMP version??? and `knit`. 
+Save the changes, `knit`, and close the file DMP3.Rmd 
+
+# Formatting the Document as a Whole
+
+## Table of Contents
+
+In the Files panel of RStudio, copy DMP3.Rmd as DMP4.Rmd using the 'More' pull down menu. Open DMP4.Rmd to continue working.
+
+To generate a Table of Contents for the HTML and Word outputs, we need to add a new line to the YAML output sections:
+
+```
+output:
+  html_document: 
+    toc: TRUE
+    toc_depth: 2
+ word_document:
+   toc: TRUE
+   toc_depth: 2
+.
+.
+---
+```
+Knit to HTML and Word to view the results.
     
-    
+In the HTML output, Table of Contents can also be floated to the left of the rendered document, by adding an additional line to the output section of the YAML:
 
+```
+output:
+  html_document: 
+    toc: TRUE
+    toc_depth: 2
+    toc_float: TRUE
+ word_document:
+   toc: TRUE
+   toc_depth: 2
+.
+.
+---
+```
+Knit to HTML to see view the results.
 
+## Section Numbering
 
+_Note: From this point on, we will only be knitting to HTML. The features added from hereon in do not work in Word without adding a specific Word style sheet (more advanced level!), or the features just break the pandoc to Word conversion! _
 
+The sections of your DMP can be automatically numbered by adding yet another line to the output section of the YAML:
 
+```
+output:
+  html_document: 
+    toc: TRUE
+    toc_depth: 2
+    toc_float: TRUE
+    number_sections: TRUE
+.
+.
+---
+```
 
+Before `knit`ting, remove the manually added section numbers in your DMP.
+
+Also, avoid auto-numbering relevant sections (Main Heading, Background, References) by inserting `{-}` to the end of the heading. 
+
+Now go ahead and `knit` to HTML.
+
+## Set a style for the HTML output
+
+The html_document engine uses the [Bootswatch theme library](https://bootswatch.com/) to support different styles of the document. This is a quick and easy way to polish the appearance of your document. (You may also apply Cascading Stylesheets to your HTML output but this, too, is an advanced feature!)
+
+The following themes work well in RMarkdown:
+cerulean, journal, flaky, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, or yeti
+
+You may also apply a Highlight style to the HTML document. For the purposes of this exercise, let's use lumen, tango or github.
+
+Here is an example of a YAML output section with the theme and highlight applied:
+
+```
+output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float: yes 
+    number_sections: yes
+    theme: journal
+    highlight: github
+.
+.
+---
+```
 
 
 
