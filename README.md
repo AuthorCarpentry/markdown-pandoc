@@ -3,7 +3,7 @@ Author Carpentry : Open Authorship and Reproducible Reporting with Markdown and 
 
 *Content Contributors: Gail Clement, Tom Morrell,  Patrick Koppula, Sebastian Karcher*
 
-*Lesson Maintainers: Gail Clement*
+*Lesson Maintainers: None*
 
 **Lesson status: In Development**
 
