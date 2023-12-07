@@ -5,7 +5,7 @@ Author Carpentry : Open Authorship and Reproducible Reporting with Markdown and 
 
 *Lesson Maintainers: None*
 
-**Lesson status: In Development**
+**Lesson status: Future**
 
 ## What you will learn:
 
