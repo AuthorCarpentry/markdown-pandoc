@@ -1,4 +1,4 @@
-Author Carpentry : Open Authorship and Reproducible Reporting with Markdown and Pandoc: A Gentle Introduction
+Author Carpentry : Open Authorship and Reproducible Reporting with Markdown and Pandoc
 =======
 
 *Content Contributors: Gail Clement, Tom Morrell,  Patrick Koppula, Sebastian Karcher*
@@ -59,5 +59,3 @@ To most effectively use these materials, please make sure to install everything
 
 ## References
 
-_Coming soon!_
-                   
